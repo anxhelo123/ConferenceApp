@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core">
+
+	<ui:define name="title">Reviewer Create
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset  title="User Details">
+        	<LEGEND><b>Provide Information</b></LEGEND>
+            <h:form prependId="false">
+            	Email
+                <br/>
+                <h:inputText styleClass="input1" id="email" value="#{reviewer.email}" 
+                              p:required="required" p:placeholder="Email" />
+                <p/>
+                First Name 
+                <br/>
+                <h:inputText styleClass="input1" id="first_name" value="#{reviewer.first_name}" 
+                              p:required="required" p:placeholder="first name" />
+                <p/>
+                Last Name 
+                <br/>
+                <h:inputText styleClass="input1" id="last_name" value="#{reviewer.last_name}" 
+                              p:required="required" p:placeholder="last name" />
+                <p/>
+                Mobile 
+                <br/>
+                <h:inputText styleClass="input1" id="mobile" value="#{reviewer.mobile}" 
+                              p:required="required" p:placeholder="mobile" />
+                <p/>
+                Affiliation 
+                <br/>
+                <h:inputText styleClass="input1" id="affiliation" value="#{reviewer.affiliation}" 
+                              p:required="required" p:placeholder="affiliation" />
+                <p/>
+                Topic of Interest 
+                <br/>
+                <h:inputText styleClass="input1" id="topic_interest" value="#{reviewer.topic_interest}" 
+                              p:required="required" p:placeholder="topic of interest" />
+                <p/>
+		        <br/>   
+		        <div class="buttons">
+                <h:commandButton id="button" value="Save" action="#{reviewer.saveReviewer}" />
+                </div>
+                <br/>
+                <h:outputText value="#{reviewer.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

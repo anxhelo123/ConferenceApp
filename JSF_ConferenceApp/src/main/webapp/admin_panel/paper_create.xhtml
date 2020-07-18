@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core">
+
+	<ui:define name="title">Paper Create
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset id="form"  title="Paper Details">
+        	<LEGEND><b>Provide Information</b></LEGEND>
+            <h:form prependId="false">
+            	Title 
+                <br/>
+                <h:inputText styleClass="input1"  id="title" value="#{paper.title}" 
+                              p:required="required" p:placeholder="Title" />
+                <p/>
+                File Name 
+                <br/>
+                <h:inputText styleClass="input1"  id="file_name" value="#{paper.file_name}" 
+                              p:required="required" p:placeholder="Title" />
+                <p/>
+                Abstract
+                <br/>
+                <h:inputText styleClass="input1"  id="abstract" value="#{paper.theAbstract}"
+                              p:placeholder="Length" p:required="required"  />
+                <p/>
+                Email
+                <br/>
+                <h:inputText styleClass="input1"  id="email" value="#{paper.email}"
+                              p:placeholder="Scenario" p:required="required"  />
+                
+		        <br/>   
+		        <div class="buttons"> 
+                <h:commandButton id="button"  value="Save" action="#{paper.savePaper}" />
+              
+                <br/>  
+                </div>
+                <h:outputText value="#{paper.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

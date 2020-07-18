@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputScript library="js" name="jquery.js" />
+        <h:outputStylesheet library="css" name="default.css" />
+        <title>  <ui:insert name="title"></ui:insert></title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+        <div id="top" class="header">Movies Management - Admin Panel</div>
+        <div id="menu" class="menu">
+            [<a href="home.xhtml">Home</a>]
+            [<h:commandLink value="Users" action="#{user.adminList}"/>]
+            [<h:commandLink value="Movies" action="#{movie.adminList}"/>]
+            [<h:commandLink value="Actors" action="#{actor.adminList}"/>]
+            [<h:commandLink value="Directors" action="#{director.adminList}"/>]
+            
+            <span id="user" class="user">
+                <b>${sessionScope.fullname} </b>
+                [<a href="changepassword.xhtml">Change Password</a>]
+                [<h:commandLink value="Profile" action="#{user.profile}"/>]
+                [<h:commandLink value="Logout" action="#{user.logout}"/>]
+            </span>
+        </div>
+        <div id="content" class="content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+        </h:form>
+    </h:body>
+
+</html>

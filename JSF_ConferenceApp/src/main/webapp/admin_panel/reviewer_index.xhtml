@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="title">
+    	Reviewer Record 
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <center>
+                <h2><h:outputText value="Reviewer Records"/></h2>
+            </center>
+            <h:dataTable binding="#{table}" value="#{reviewer.reviewersList()}" var="r" class="table table-striped table-hover table-bordered" >
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{r.email}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                    <h:outputText value="#{r.first_name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                    <h:outputText value="#{r.last_name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Mobile</f:facet>
+                    <h:outputText value="#{r.mobile}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Affiliation</f:facet>
+                    <h:outputText value="#{r.affiliation}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Topic of Interest</f:facet>
+                    <h:outputText value="#{r.topic_interest}"/>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action = "#{reviewer.edit(r.email)}" value="Update" class="btn btn-primary"> 
+                    </h:commandButton>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action = "#{reviewer.delete(r.email)}" value="Delete" class="btn btn-danger"> 
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+            <center><h:commandButton action = "reviewer_create?faces-redirect=true" value="Create New Reviewer" class="btn btn-success"></h:commandButton> </center>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

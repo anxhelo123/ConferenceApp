@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="main.js" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</h:head>
+
+<h:body>
+
+	<h:graphicImage styleClass="wave"
+		value="#{resource['images/wave.png']}" />
+	<div class="container">
+		<div class="img">
+			<h:graphicImage styleClass="img" value="#{resource['images/bg.svg']}" />
+		</div>
+		<div class="login-content">
+			<h:form>
+				<h:graphicImage styleClass="img"
+					value="#{resource['images/avatar.svg']}" />
+				<h2 class="title">Welcome</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+						<h:inputText required="true" requiredMessage="Input username" class="input" id="username" value="#{user.username}" />
+						<h:message for="username"></h:message>
+					</div>
+				</div>
+				<div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						
+						<h:inputSecret required="true" requiredMessage="Input password" class="input" id="password" value="#{user.password}" />
+						<h:message for="password"></h:message>
+					</div>
+				</div>
+				<a href="recoverpassword.xhtml">Forgot Password?</a>
+				<h:commandButton value="Login" styleClass="btn"
+					action="#{user.login()}" />
+				<h:commandButton value="Register" styleClass="btn" action="register.xhtml" />
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

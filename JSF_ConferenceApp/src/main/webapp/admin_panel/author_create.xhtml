@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core">
+
+	<ui:define name="title">Author Create
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset id="form" title="User Details">
+        	<LEGEND><b>Provide Information</b></LEGEND>
+            <h:form prependId="false">
+            	Email 
+                <br/>
+                <h:inputText styleClass="input1" id="email" value="#{author.email}" 
+                              p:required="true" p:placeholder="Email" />
+                <p/>
+                First Name 
+                <br/>
+                <h:inputText styleClass="input1" id="first_name" value="#{author.first_name}" 
+                              p:required="true" p:placeholder="first name" />
+                <p/>
+                Last Name
+		        <br/> 
+		        <h:inputText styleClass="input1" id="last_name" value="#{author.last_name}" 
+                              p:required="true" p:placeholder="last name" />
+                <p/>
+		        <br/>   
+		        <div class="buttons">  
+                <h:commandButton id="button" value="Save" action="#{author.saveAuthor}" />
+                </div>
+                <br/>
+                <h:outputText value="#{author.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

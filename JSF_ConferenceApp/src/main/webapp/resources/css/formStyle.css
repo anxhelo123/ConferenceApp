@@ -1,0 +1,22 @@
+fieldset{
+	
+	width:100%;
+	text-align: center;
+}
+
+.buttons input {
+	margin: 5px;
+    padding: 5px 5px 5px 5px; 
+    width: 200px;
+    border: 1px solid ;
+    border-radius:8px;
+    background-color:#28c994;
+    
+    cursor: pointer;
+}
+
+.input1{
+	 padding: 12px 20px;
+	border: none;
+  	border-bottom: 2px solid black;
+}

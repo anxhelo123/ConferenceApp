@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core">
+
+	<ui:define name="title">User Create
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset id="form"   title="User Details">
+        	<LEGEND><b>Provide Information</b></LEGEND>
+            <h:form prependId="false">
+            	Name 
+                <br/>
+                <h:inputText styleClass="input1" id="name" value="#{user.email}" 
+                              p:required="true" p:placeholder="Name" />
+                <p/>
+                Lastname 
+                <br/>
+                <h:inputText styleClass="input1" id="lastname" value="#{user.lastname}" 
+                              p:required="true" p:placeholder="Lastname" />
+                <p/>
+                Fullname
+                <br/>
+                <h:inputText styleClass="input1" id="fullname" value="#{user.fullname}"
+                              p:placeholder="Fullname"  
+                              p:required="true"  />
+                <p/>
+                Username
+                <br/>
+                <h:inputText styleClass="input1" id="username" value="#{user.username}"
+                              p:placeholder="Username"  
+                              p:required="true"  />
+                <p/>
+                Email Address 
+                <br/>
+                <h:inputText styleClass="input1" id="email" value="#{user.email}" 
+                              p:required="true"
+                              p:placeholder="Email Address"  
+                              p:type="email" />
+                <p/>
+                Password 
+                <br/>
+                <h:inputText styleClass="input1" id="password" value="#{user.password}" 
+                              p:required="true"
+                              p:placeholder="Password"  
+                              p:type="secret" />
+                <p/>
+                Mobile Number
+                <br/>
+                <h:inputText styleClass="input1" id="mobile" value="#{user.mobile}"
+                              p:pattern="^\d{10}$"  
+                              p:placeholder="10 digit mobile number"  
+                              maxlength="10" />
+                <p/>
+                Role
+                <br/>
+                <h:selectOneMenu styleClass="input1" style="width:11%" id="role" value = "#{user.role}"> 
+		            <f:selectItem itemValue = "admin" itemLabel = "Admin" /> 
+		            <f:selectItem itemValue = "user" itemLabel = "User" />  
+		        </h:selectOneMenu>
+		        <br/>
+		         Profession
+                <br/>
+                <h:selectOneMenu styleClass="input1" style="width:11%" id="profession" value = "#{user.profession}"> 
+		            <f:selectItem itemValue = "author" itemLabel = "Author" /> 
+		            <f:selectItem itemValue = "reviewer" itemLabel = "Reviewer" />  
+		        </h:selectOneMenu>
+		        <br/>
+		        <br/>  
+		        <div class="buttons"> 
+                <h:commandButton id="button"  value="Save" action="#{user.saveUser}" />
+                <br/>
+                </div>
+                <h:outputText value="#{user.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

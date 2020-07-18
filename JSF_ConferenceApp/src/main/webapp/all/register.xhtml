@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="anonymous.xhtml"
+	xmlns:p="http://java.sun.com/jsf/passthrough"
+	xmlns:h="https://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="title">Author Create
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	
+		<script type="text/javascript">
+			function validate() {
+				var pwd1 = $("#password").val();
+				var pwd2 = $("#confirmPassword").val();
+				if (pwd1 != pwd2) {
+					alert("Sorry! Passwords do not match!");
+					$("#confirmPassword").focus();
+					return false;
+				}
+				return true;
+			}
+		</script>
+	<ui:define name="content">
+		<h:form prependId="false" onsubmit="return validate()">
+            	
+            	Name 
+            	
+            </p:inputText>
+			<h:inputText styleClass="input1" value="#{user.name}"
+				p:required="required" p:placeholder="Name" />
+			<p />
+                Lastname 
+                <br />
+			<h:inputText styleClass="input1" value="#{user.lastname}"
+				p:required="required" p:placeholder="Lastname" />
+			<p />
+                Username 
+                <br />
+			<h:inputText styleClass="input1" value="#{user.username}"
+				p:required="required" p:placeholder="Username" />
+			<p />
+                Password 
+                <br />
+			<h:inputSecret styleClass="input1" id="password"
+				value="#{user.password}" p:placeholder="Password"
+				p:required="required" />
+			<p />
+                Confirm Password 
+                <br />
+			<h:inputSecret styleClass="input1" id="confirmPassword"
+				p:placeholder="Confirm Password" p:required="required" />
+			<p />
+                Fullname
+                <br />
+			<h:inputText styleClass="input1" id="fullname"
+				value="#{user.fullname}" p:placeholder="Fullname"
+				p:required="required" />
+			<p />
+                Email Address 
+                <br />
+			<h:inputText styleClass="input1" id="email" value="#{user.email}"
+				p:required="required" p:placeholder="Email Address" p:type="email" />
+			<p />
+                Mobile Number
+                <br />
+			<h:inputText styleClass="input1" id="mobile" value="#{user.mobile}"
+				p:pattern="^\d{10}$" p:placeholder="10 digit mobile number"
+				maxlength="10" />
+			<p />
+			<div class="buttons">
+				<h:commandButton id="button" value="Register"
+					action="#{user.register()}" />
+			</div>
+			<p />
+			<a href="login.xhtml">Go Back To Login</a>
+			<p />
+			<h:outputText value="#{user.message}" />
+			<br></br>
+		</h:form>
+	</ui:define>
+	
+</ui:composition>

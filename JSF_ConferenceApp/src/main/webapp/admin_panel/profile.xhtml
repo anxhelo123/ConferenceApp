@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:define name="title">Profile
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset  title="User Details">
+        	<LEGEND><b>Update Profile</b></LEGEND>
+            <h:form prependId="false">
+            	Name 
+                <br/>
+                <h:inputText styleClass="input1" id="name" value="#{user.name}" 
+                              p:required="required" p:placeholder="Name" />
+                <p/>
+                Lastname 
+                <br/>
+                <h:inputText styleClass="input1" id="lastname" value="#{user.lastname}" 
+                              p:required="required" p:placeholder="Lastname" />
+                <p/>
+                Fullname
+                <br/>
+                <h:inputText styleClass="input1" id="fullname" value="#{user.fullname}"
+                              p:placeholder="Fullname"  
+                              p:required="required"  />
+                <p/>
+                Email Address 
+                <br/>
+                <h:inputText styleClass="input1" id="email" value="#{user.email}" 
+                              p:required="required"
+                              p:placeholder="Email Address"  
+                              p:type="email" />
+                <p/>
+                Mobile Number
+                <br/>
+                <h:inputText styleClass="input1" id="mobile" value="#{user.mobile}"
+                              p:pattern="^\d{10}$"  
+                              p:placeholder="10 digit mobile number"  
+                              maxlength="10" />
+                <p/>
+                <div class="buttons"> 
+                <h:commandButton id="button" value="Update" action="#{user.update}" />
+                </div>
+                <br/>
+                <h:outputText value="#{user.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

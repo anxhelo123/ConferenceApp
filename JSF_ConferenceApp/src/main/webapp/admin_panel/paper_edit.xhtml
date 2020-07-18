@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f = "http://java.sun.com/jsf/core">
+
+	<ui:define name="title">UserPaper Edit
+		<h:outputStylesheet name="/css/formStyle.css"/>
+	</ui:define>
+	 
+    <ui:define name="content">
+        <fieldset id="form" title="Paper Edit">
+        	<LEGEND><b>Edit Information</b></LEGEND>
+            <h:form   prependId="false">
+                <h:inputHidden styleClass="input1" id="id" value="#{paper.paper_id}" />
+            	Title
+                <br/>
+                <h:inputText styleClass="input1" id="title" value="#{paper.title}" 
+                              p:required="true" p:placeholder="Title" />
+                <p/>
+                File Name 
+                <br/>
+                <h:inputText styleClass="input1" id="file_name" value="#{paper.file_name}" 
+                              p:required="true" p:placeholder="File Name" />
+                <p/>
+                Abstract
+                <br/>
+                <h:inputText styleClass="input1" id="abstract" value="#{paper.theAbstract}"
+                              p:placeholder="Abstract" p:required="true"  />
+                <p/>
+                Email
+                <br/>
+                <h:inputText styleClass="input1" id="email" value="#{paper.email}"
+                              p:placeholder="Email" p:required="true"  />
+                <p/>
+		        <br/>
+		        <div class="buttons"> 
+                <h:commandButton id="button" value="Edit" action="#{paper.editPaper(paper.paper_id)}" />
+                </div>
+                <br/>
+                <h:outputText value="#{paper.message}" />
+            </h:form>
+        </fieldset>
+    </ui:define>
+
+</ui:composition>

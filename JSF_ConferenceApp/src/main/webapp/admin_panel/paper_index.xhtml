@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="title">
+    	Paper record 
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <center>
+                <h2><h:outputText value="Paper Records"/></h2>
+            </center>
+            <h:dataTable binding="#{table}" value="#{paper.paperList()}" var="p" class="table table-striped table-hover table-bordered" >
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{p.paper_id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputText value="#{p.title}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">File Name</f:facet>
+                    <h:outputText value="#{p.file_name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Abstract</f:facet>
+                    <h:outputText value="#{p.theAbstract}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{p.email}"/>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action = "#{paper.edit(p.paper_id)}" value="Update" class="btn btn-primary"> 
+                    </h:commandButton>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action = "#{paper.delete(p.paper_id)}" value="Delete" class="btn btn-danger"> 
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+            <center><h:commandButton action = "paper_create?faces-redirect=true" value="Create New Paper" class="btn btn-success"></h:commandButton> </center>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

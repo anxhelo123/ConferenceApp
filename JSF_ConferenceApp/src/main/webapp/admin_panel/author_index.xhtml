@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="adminTemplate.xhtml"
+                xmlns:p="http://java.sun.com/jsf/passthrough"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="title">
+    	Author Record 
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <center>
+                <h2><h:outputText value="Author Records"/></h2>
+            </center>
+            <h:dataTable binding="#{table}" value="#{author.authorList()}" var="a" class="table table-striped table-hover table-bordered" >
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{a.email}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                    <h:outputText value="#{a.first_name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                    <h:outputText value="#{a.last_name}"/>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Update</f:facet>
+                    <h:commandButton action = "#{author.edit(a.email)}" value="Update" class="btn btn-primary"> 
+                    </h:commandButton>
+                </h:column>
+                <h:column> 
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action = "#{author.delete(a.email)}" value="Delete" class="btn btn-danger"> 
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+            <center><h:commandButton action = "author_create?faces-redirect=true" value="Create New Author" class="btn btn-success"></h:commandButton> </center>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
